@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 8422892626600249584}
   - component: {fileID: 8422892626592999198}
   m_Layer: 0
-  m_Name: DogPBR
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
