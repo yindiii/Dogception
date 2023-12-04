@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public float spawnInterval = 1.0f;
+    public float spawnInterval = 10.0f;
     public Transform[] spawnPoints;
     public Transform playerTransform;
     public bool canSpawn = true;

@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
     {
         enemyKills++;
         enemyKillsDisplay.text = "Enemy Kills: " + enemyKills;
-        if (enemyKills >= 20)
+        if (enemyKills >= 5)
         {
             parkourPlatforms.SetActive(true);
             if (audioSource != null && audioSource.clip != null)

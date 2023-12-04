@@ -9399,7 +9399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3390025007258994116, guid: b515d7a8883c84140b10e1821364157e, type: 3}
-  spawnInterval: 4
+  spawnInterval: 10
   spawnPoints:
   - {fileID: 94598431}
   - {fileID: 1652813900}
