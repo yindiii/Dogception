@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - EnemySword
+  - SecretSpot
+  - Goal
+  - Camera
+  - UICamera
   layers:
   - Default
   - TransparentFX

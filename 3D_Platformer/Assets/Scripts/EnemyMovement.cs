@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
     private Animator animator;
     public Transform swordTip;
     public bool IsAlreadyHit;
+    private bool isAttacking;
+    private bool isDizzy = false;
 
     public GameObject sword; // Assign the sword GameObject in the Inspector
 
@@ -26,7 +30,11 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        MoveTowardsTarget();
+        if (!isDizzy)
+        {
+            MoveTowardsTarget();
+        }
+        
     }
 
     void MoveTowardsTarget()
@@ -41,16 +49,27 @@ public class EnemyMovement : MonoBehaviour
         // Check for attack range
         if (Vector3.Distance(transform.position, target.position) < 3.0f) 
         {
-            StartAttack();
+            //StartAttack();
+            isAttacking = true;
             animator.SetBool("isAttacking", true);
             animator.SetBool("Attack01", true);// Trigger attack animation
             //CheckHit();
         }
         else
         {
-            EndAttack();
+            //EndAttack();
+            isAttacking = false;
             animator.SetBool("isAttacking", false);
             animator.SetBool("Attack01", false);
+        }
+
+        if (isAttacking)
+        {
+            StartAttack();
+        }
+        else
+        {
+            EndAttack();
         }
     }
 
@@ -71,5 +90,18 @@ public class EnemyMovement : MonoBehaviour
     public void GetHit()
     {
         animator.SetTrigger("Die");
+    }
+
+    public void TriggerDizzyAnimation()
+    {
+        isDizzy = true;
+        animator.SetTrigger("Dizzy");
+        StartCoroutine(ResetDizzyState());
+    }
+
+    IEnumerator ResetDizzyState()
+    {
+        yield return new WaitForSeconds(3f);
+        isDizzy = false;
     }
 }

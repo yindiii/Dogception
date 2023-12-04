@@ -18,8 +18,11 @@ public class DogKnightMovement : MonoBehaviour
     private Transform currentPlatform = null;
 
     public LayerMask groundLayer; // Assign this in the Inspector
-    private BoxCollider bodyCollider;
     private BoxCollider feetCollider;
+
+    private AudioSource audioSource;
+    public AudioClip attack;
+    //private AudioClip die;
 
 
     public GameObject sword; // Assign the sword GameObject in the Inspector
@@ -37,8 +40,8 @@ public class DogKnightMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
-        bodyCollider = GetComponent<BoxCollider>();
         feetCollider = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -89,6 +92,11 @@ public class DogKnightMovement : MonoBehaviour
             attackCounter = (attackCounter + 1) % 2;
             animator.SetBool("Attack01", attackCounter == 0);
             animator.SetBool("Attack02", attackCounter == 1);
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.clip = attack;
+                audioSource.Play();
+            }
         }
         if (Input.GetButtonUp("Fire1"))
         {
